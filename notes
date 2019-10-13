@@ -1,0 +1,13 @@
+Running Tests
+There are 2 ways to run the tests inside the container.
+
+The volume must be shared both ways.  The first is to just run the main
+container and then attach to it and run the npm run test in the main
+container.
+`docker run -it 35528d14a1a1 npm run test`
+
+The other way is to start up a separate container using docker compose,
+and then attach to the secondary container.
+
+You can't attach stdout to npm run test either way, because it spawns
+a subprocess, and docker only lets you attach to the main process.
